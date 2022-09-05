@@ -3,7 +3,7 @@ CREATE DATABASE cocktail_planner;
 
 \c cocktail_planner;
 
-CREATE TABLE cocktails (
+CREATE TABLE menus (
     id SERIAL PRIMARY KEY,
     name TEXT NOT NULL,
     image TEXT NOT NULL,

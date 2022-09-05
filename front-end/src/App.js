@@ -3,16 +3,18 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 //COMPONENTS
 import NavBar from './Components/NavBar';
-import Cocktails from './Components/Cocktails'
-import CocktailDetails from './Components/CocktailDetails';
-import EditCocktail from './Components/EditCocktail';
-import NewCocktail from './Components/NewCocktail';
+import SingleCocktail from './Pages/SingleCocktail';
+import Menus from './Components/Menus';
+import NewMenu from './Components/NewMenu';
+import MenuDetail from './Components/MenuDetail';
 
 
 //PAGES
 import Home from './Pages/Home';
 import Error from './Pages/Error';
 import Search from './Pages/Search';
+import MenuPage from './Pages/MenuPage';
+import EditMenu from './Components/EditMenu';
 
 
 const App = () => {
@@ -23,12 +25,14 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/search" element={<Search />} />
+          <Route path="cocktail/:id" element={<SingleCocktail />} />
+          <Route path="/menupage" element={<MenuPage />} />
+          <Route path="/menus" element={<Menus />} />
+          <Route path="/menus/new" element={<NewMenu />} />
+          <Route path="/menus/:id" element={<MenuDetail />} />
+          <Route path="/menus/:id/edit" element={<EditMenu />} />
           
-          <Route path="/cocktails" element={<Cocktails />} />
-          <Route path="/cocktails/new" element={<NewCocktail />} />
-          <Route path="/cocktails/:id" element={<CocktailDetails />} />
-          <Route path="/cocktails/:id/edit" element={<EditCocktail />} />
-          
+
           <Route path="*" element={<Error />} />
         </Routes>
       </Router>

@@ -1,6 +1,6 @@
 \c cocktail_planner
 
-INSERT INTO cocktails (name,image,info,glass,instructions,ingredients,is_favorite) VALUES
+INSERT INTO menus (name,image,info,glass,instructions,ingredients,is_favorite) VALUES
 ('Mimosa','https://www.thecocktaildb.com/images/media/drink/juhcuu1504370685.jpg','Alcoholic', 'Champagne Flute','Ensure Both Ingredients Are Well Chilled, Then Mix Into The Glass. Serve Cold.','Champagne Orange Juice',true ), 
 ('Martini', 'https://www.thecocktaildb.com/images/media/drink/71t8581504353095.jpg','Alcoholic','Cocktail Glass','Straight: Pour All Ingredients Into Mixing Glass With Ice Cubes. Stir Well. Strain In Chilled Martini Cocktail Glass. Squeeze Oil From Lemon Peel Onto The Drink, Or Garnish With Olive.','Gin Dry Vermouth Olive',false),
 ('Rum Punch','https://www.thecocktaildb.com/images/media/drink/wyrsxu1441554538.jpg','Alcoholic','Punch Bowl','Mix All Ingredients In A Punch Bowl And Serve.','Rum Ginger Ale Fruit Punch Orange Juice Ice',true ),

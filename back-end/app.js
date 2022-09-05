@@ -6,16 +6,16 @@ const cors = require('cors');
 const app = express();
 
 //CONTROLLER
-const coctailController = require('./controllers/cocktailController');
+const menuController = require('./controllers/menuController');
 
 // MIDDLEWARE
 app.use(express.json());
 app.use(cors());
-app.use('/cocktails', coctailController);
+app.use('/menus', menuController);
 
 // ROUTES
 app.get('/', (req, res) => {
-  res.send("Welcome to Cocktail Planner");
+  res.send("Welcome to Menu Planner");
 });
 
 app.get('*', (req, res) => {

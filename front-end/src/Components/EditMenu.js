@@ -1,3 +1,4 @@
+import React from 'react'
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
@@ -5,116 +6,105 @@ import { Button, Form, Container } from 'react-bootstrap';
 
 const API = process.env.REACT_APP_API_URL;
 
-const EditCocktail = () => {
+const EditMenu = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const [cocktail, setCocktail] = useState({
-      name: "",
-    image: "",
-    info: "",
-    glass: "",
-    instructions: "",
-    ingredients: "",
+  const [menu, setMenu] = useState({
+    name: '',
+    image: '',
+    info: '',
+    glass: '',
+    instructions: '',
+    ingredients: '',
     is_favorite: false,
   });
 
   const handleTextChange = (event) => {
-    setCocktail({ ...cocktail, [event.target.id]: event.target.value });
+    setMenu({ ...menu, [event.target.id]: event.target.value });
   };
+    const handleCheckboxChange = () => {
+      setMenu({ ...menu, is_favorite: !menu.is_favorite });
+    };
 
   useEffect(() => {
-    axios.get(`${API}/cocktails/${id}`).then(
-      (response) => setCocktail(response.data.payload),
-      (error) => navigate(`/cocktails`)
+    axios.get(`${API}/menus/${id}`).then(
+      (response) => setMenu(response.data.payload),
+      (error) => navigate(`/menus`)
     );
   }, [id, navigate]);
 
-  const updateCocktail = () => {
+  const updateMenu = () => {
     axios
-      .put(`${API}/cocktails/${id}`, cocktail)
+      .put(`${API}/menus/${id}`, menu)
       .then((response) => {
-        setCocktail(response.data);
-        navigate(`/cocktails/${id}`);
+        setMenu(response.data);
+        navigate(`/menus/${id}`);
       })
       .catch((error) => console.log(error));
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    updateCocktail(cocktail, id);
+    updateMenu(menu, id);
   };
 
   return (
     <div className="Edit">
-      <h1> Edit Cocktail </h1>
-      <br />
-     
       <Container>
         <Form onSubmit={handleSubmit}>
+          <Form.Group className="mb-3">
+            <Form.Label htmlFor="name">Image:</Form.Label>
+            <Form.Control
+              id="image"
+              value={menu.image}
+              type="text"
+              required
+              onChange={handleTextChange}
+            />
+          </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label htmlFor="name">Name:</Form.Label>
             <Form.Control
               id="name"
-              value={cocktail.name}
+              value={menu.name}
               type="text"
               required
               onChange={handleTextChange}
-             
+              placeholder="Cocktail Name"
             />
           </Form.Group>
           <Form.Group className="mb-3">
-            <Form.Label htmlFor="image">Image:</Form.Label>
-            <Form.Control
-              id="image"
-              value={cocktail.image}
-              type="text"
-              required
-              onChange={handleTextChange}
-            />
-          </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Label htmlFor="info">Info:</Form.Label>
+            <Form.Label htmlFor="protein">Info:</Form.Label>
             <Form.Control
               id="info"
-              value={cocktail.info}
+              value={menu.info}
               type="text"
               required
               onChange={handleTextChange}
-             
+              placeholder="Information"
             />
           </Form.Group>
           <Form.Group className="mb-3">
-            <Form.Label htmlFor="glass">Glass:</Form.Label>
+            <Form.Label htmlFor="name">Ingredients:</Form.Label>
             <Form.Control
-              id="glass"
-              value={cocktail.glass}
-              type="text"
+              id="ingredients"
+              value={menu.ingredients}
+              type="number"
               required
               onChange={handleTextChange}
-             
+              placeholder="Ingredients"
             />
           </Form.Group>
           <Form.Group className="mb-3">
-            <Form.Label htmlFor="instructions">Instructions:</Form.Label>
+            <Form.Label htmlFor="is_favorite">Favorite:</Form.Label>
             <Form.Control
-              id="instructiions"
-              value={cocktail.instructions}
-              type="text"
+              id="favorite"
+              value={menu.is_favorite}
+              type="favorite"
               required
-              onChange={handleTextChange}
-           
-            />
-          </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Label htmlFor="ingredients">Ingredients:</Form.Label>
-            <Form.Control
-              id="instructiions"
-              value={cocktail.ingredients}
-              type="text"
-              required
-              onChange={handleTextChange}
-           
+              onChange={handleCheckboxChange}
+              placeholder="Favorite Cocktail"
             />
           </Form.Group>
           <br />
@@ -122,12 +112,12 @@ const EditCocktail = () => {
             Submit
           </Button>
         </Form>
-        <Link to={`/cocktails/${id}`}>
+        <Link to={`/menus/${id}`}>
           <Button variant="dark">Cancel</Button>
         </Link>
       </Container>
     </div>
   );
-};
+}
 
-export default EditCocktail;
+export default EditMenu

@@ -321,8 +321,9 @@ img {
 position: fixed;
 top: 0;
 left: 0;
-width: 100vw;
-height: 100vh;
+width: 100%;
+height: 100%;
+background: whitesmoke;
 object-fit: cover;
 
 
@@ -335,8 +336,8 @@ object-fit: cover;
   top: 0;
   left: 0;
   width: 100%;
-  height: 200%;
-  background: white;
+  height: 100%;
+  background: rgba(0,0,0,0.9);
   opacity: 0.7;
   z-index: -1;
 }
@@ -359,4 +360,44 @@ object-fit: cover;
   color: white;
 
   -webkit-clip-path: polygon( 0% 0%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0% 75% );clip-path: polygon( 0% 0%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0% 75% );
+}
+.cocktail-section {
+  text-align: center;
+}
+.drink {
+  width: var(--smallWidth);
+  max-width: var(--fullWidth);
+  margin: 0 auto;
+  text-align: left;
+}
+.drink img {
+  border-radius: var(--mainBorderRadius);
+}
+.drink p {
+  font-weight: bold;
+  text-transform: capitalize;
+  line-height: 1.8;
+}
+.drink span {
+  margin-right: 0.5rem;
+}
+.drink-data {
+  background: var(--primaryLightColor);
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--mainBorderRadius);
+  color: var(--primaryColor);
+}
+.drink-info {
+  padding-top: 2rem;
+}
+@media screen and (min-width: 992px) {
+  .drink {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    gap: 3rem;
+    align-items: center;
+  }
+  .drink-info {
+    padding-top: 0;
+  }
 }
