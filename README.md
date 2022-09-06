@@ -1,2 +1,2 @@
-# Cocktails_Planner
+# Cocktails_Menu
 Hello
