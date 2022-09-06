@@ -7,7 +7,7 @@ import Menus from '../Components/Menus'
 
 const MenuPage = () => {
   return (
-      <div>
+      <div className='menu_page'>
       <h1>Menu</h1>
      
       <Menus />

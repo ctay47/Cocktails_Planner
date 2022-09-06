@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { Button, Form, Container } from 'react-bootstrap';
+import { Button, Form, Container,Row,Col } from 'react-bootstrap';
 
 const API = process.env.REACT_APP_API_URL;
 
@@ -50,73 +50,86 @@ const EditMenu = () => {
   };
 
   return (
-    <div className="Edit">
-      <Container>
-        <Form onSubmit={handleSubmit}>
-          <Form.Group className="mb-3">
-            <Form.Label htmlFor="name">Image:</Form.Label>
-            <Form.Control
-              id="image"
-              value={menu.image}
-              type="text"
-              required
-              onChange={handleTextChange}
-            />
-          </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Label htmlFor="name">Name:</Form.Label>
-            <Form.Control
-              id="name"
-              value={menu.name}
-              type="text"
-              required
-              onChange={handleTextChange}
-              placeholder="Cocktail Name"
-            />
-          </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Label htmlFor="protein">Info:</Form.Label>
-            <Form.Control
-              id="info"
-              value={menu.info}
-              type="text"
-              required
-              onChange={handleTextChange}
-              placeholder="Information"
-            />
-          </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Label htmlFor="name">Ingredients:</Form.Label>
-            <Form.Control
-              id="ingredients"
-              value={menu.ingredients}
-              type="number"
-              required
-              onChange={handleTextChange}
-              placeholder="Ingredients"
-            />
-          </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Label htmlFor="is_favorite">Favorite:</Form.Label>
-            <Form.Control
-              id="favorite"
-              value={menu.is_favorite}
-              type="favorite"
-              required
-              onChange={handleCheckboxChange}
-              placeholder="Favorite Cocktail"
-            />
-          </Form.Group>
-          <br />
-          <Button variant="dark" type="submit">
-            Submit
-          </Button>
-        </Form>
-        <Link to={`/menus/${id}`}>
-          <Button variant="dark">Cancel</Button>
-        </Link>
+    <section className="Edit">
+      <Container className="square border">
+        <Row>
+          <Form onSubmit={handleSubmit}>
+            <Form.Group as={Row} className="mb-3">
+              <Form.Label htmlFor="name">Image</Form.Label>
+              <Col>
+                <Form.Control
+                  id="image"
+                  value={menu.image}
+                  type="text"
+                  required
+                  onChange={handleTextChange}
+                />
+              </Col>
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label htmlFor="name">Name</Form.Label>
+
+              <Col>
+                <Form.Control
+                  id="name"
+                  value={menu.name}
+                  type="text"
+                  required
+                  onChange={handleTextChange}
+                  placeholder="Cocktail Name"
+                />
+              </Col>
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label htmlFor="info">Glass</Form.Label>
+              <Col>
+                <Form.Control
+                  id="glass"
+                  value={menu.glass}
+                  type="text"
+                  onChange={handleTextChange}
+                  placeholder="Glass"
+                />
+              </Col>
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label htmlFor="name">Ingredients</Form.Label>
+              <Col>
+                <Form.Control
+                  id="ingredients"
+                  value={menu.ingredients}
+                  type="text"
+                  required
+                  onChange={handleTextChange}
+                  placeholder="Ingredients"
+                />
+              </Col>
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label htmlFor="is_favorite">Favorite</Form.Label>
+              <Col>
+                <Form.Check
+                  id="is_favorite"
+                  value={menu.is_favorite}
+                  type="checkbox"
+                  required
+                  onChange={handleCheckboxChange}
+                 
+                />
+              </Col>
+            </Form.Group>
+
+            <button className='btn btn-primary' type="submit">
+              Submit
+            </button>
+            {' '}
+            <Link to={`/menus/${id}`}>
+              <button className='btn btn-primary'>Cancel</button>
+            </Link>
+          </Form>
+        </Row>
       </Container>
-    </div>
+    </section>
   );
 }
 

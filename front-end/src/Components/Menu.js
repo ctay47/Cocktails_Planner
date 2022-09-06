@@ -1,21 +1,20 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
 
 const Menu = ({menu}) => {
   return (
     <tr>
       <td>
-      
-          <img src={menu.image}></img>
-      
+        <Link to={`/menus/${menu.id}`}>
+          {<img className="table_img" src={menu.image}></img>}
+        </Link>
       </td>
       <td>
-        <a href={`/menus/${menu.id}`}>{menu.name}</a>
+        <Link to={`/menus/${menu.id}`}>{menu.name}</Link>
       </td>
-
-      {menu.info}
-      <td></td>
-      {menu.ingredients}
+      <td> {menu.glass} </td>
+      <td>{menu.ingredients}</td>
       <td>
         {menu.is_favorite ? <span>❤️</span> : <span>&nbsp; &nbsp; &nbsp;</span>}
       </td>

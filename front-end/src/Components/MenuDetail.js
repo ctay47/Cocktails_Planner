@@ -38,12 +38,12 @@ const MenuDetail = () => {
            <Card className="card" style={{ width: '35rem' }}>
              <Card.Text></Card.Text>
              <Card.Img variant="top" src={menu.image} />
-             <Card.Body>
+              <Card.Body>
                <Card.Title>
                  <h3>{menu.name}</h3>
                </Card.Title>
                <Card.Text>
-                 <h3>Info: {menu.info}</h3>
+                 <h3>Glass: {menu.glass}</h3>
                  <h3>Ingredients: {menu.ingredients}</h3>
                  <h3>Favorite: {menu.is_favorite ? <span>❤️</span> : null} </h3>
                </Card.Text>

@@ -2,8 +2,10 @@ import React from 'react';
 import Loading from '../Components/Loading';
 import { useParams, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import NewMenu
-  from '../Components/NewMenu';
+import NewMenu from '../Components/NewMenu';
+import { Card, Container } from 'react-bootstrap';
+
+
 const SingleCocktail = () => {
   const { id } = useParams();
   const [loading, setLoading] = useState(false);
@@ -58,6 +60,8 @@ const SingleCocktail = () => {
     }
     getCocktail();
   }, [id]);
+
+  
   if (loading) {
     return <Loading />;
   }
@@ -67,42 +71,49 @@ const SingleCocktail = () => {
     const { name, image, category, info, glass, instructions, ingredients } =
       cocktail;
     return (
-      <section className="section cocktail-section">
-        <NewMenu image={image} />
-        <h2 className="section-title">{name}</h2>
-        <div className="drink">
-          <img src={image} alt={name}></img>
-          <div className="drink-info">
-            <p>
-              <span className="drink-data">name :</span> {name}
-            </p>
-            <p>
-              <span className="drink-data">category :</span> {category}
-            </p>
-            <p>
-              <span className="drink-data">info :</span> {info}
-            </p>
-            <p>
-              <span className="drink-data">glass :</span> {glass}
-            </p>
-            <p>
-              <span className="drink-data">instructons :</span> {instructions}
-            </p>
-            <p>
-              <span className="drink-data">ingredients :</span>
-              {ingredients.map((item, index) => {
-                return item ? <span key={index}> {item}</span> : null;
-              })}
-            </p>
-            <Link to="/search" className="btn btn-primary">
-              back home
-            </Link>
-            <br />
-            <Link to="/menupage" className="btn btn-primary">
-              Menu
-            </Link>
-          </div>
-        </div>
+      <section>
+        <Container>
+          <Card className="card" style={{ width: '35rem' }}>
+            <Card.Title className="section-title">
+              <h2>{name}</h2>{' '}
+            </Card.Title>
+
+            <Card.Img variant="top" src={image} alt={name} />
+            <Card.Body>
+              <Card.Text>
+                <p>
+                  <span className="drink-data">name :</span> {name}
+                </p>
+                <p>
+                  <span className="drink-data">category :</span> {category}
+                </p>
+                <p>
+                  <span className="drink-data">info :</span> {info}
+                </p>
+                <p>
+                  <span className="drink-data">glass :</span> {glass}
+                </p>
+                <p>
+                  <span className="drink-data">instructons :</span>{' '}
+                  {instructions}
+                </p>
+              </Card.Text>
+              <p>
+                <span className="drink-data">ingredients :</span>
+                {ingredients.map((item, index) => {
+                  return item ? <span key={index}> {item}</span> : null;
+                })}
+              </p>
+              <Link to="/search" className="btn btn-primary">
+                back home
+              </Link>{' '}
+              <Link to="/menupage" className="btn btn-primary">
+                Menu
+              </Link>
+              <NewMenu />
+            </Card.Body>
+          </Card>
+        </Container>
       </section>
     );
   }

@@ -12,12 +12,10 @@ const Home = () => {
       </video>
       <div class="video-banner">
         <div class="section-title">
-          <h1>Coktail Menu Planner</h1>
+          <h1>Cocktail Menu Planner</h1>
           <div class="underline"></div>
         </div>
-        <p class="video-text">
-          Create A Cocktail Menu! <span></span>
-        </p>
+       
         <Link to="/search">
           <button className="btn btn-primary">Search</button>
         </Link>
