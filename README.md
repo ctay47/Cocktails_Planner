@@ -1,2 +1,3 @@
 # Cocktails_Menu
-Hello
+
+About the Cocktail Menu App
