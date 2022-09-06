@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS menus;
+
 
 CREATE TABLE menus (
     id SERIAL PRIMARY KEY,
