@@ -213,7 +213,22 @@ a {
   box-shadow: 2px 5px 3px 0px rgba(0, 0, 0, 0.5);
 }
 
-
+.form-control label {
+  display: block;
+  margin-bottom: 1.25rem;
+  font-weight: bold;
+  letter-spacing: 0.25rem;
+  color: var(--primaryColor);
+}
+.form-control input {
+  width: 100%;
+  border: none;
+  border-color: transparent;
+  background: var(--mainBackground);
+  border-radius: var(--mainBorderRadius);
+  padding: 0.5rem;
+  font-size: 1.2rem;
+}
 
 .Edit h1 {
   text-align: center;

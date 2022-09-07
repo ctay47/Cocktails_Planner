@@ -7,7 +7,7 @@ const Menu = ({menu}) => {
     <tr>
       <td>
         <Link to={`/menus/${menu.id}`}>
-          {<img className="table_img" src={menu.image} alt=''></img>}
+          {<img className="table_img" src={menu.image} alt='table_img'></img>}
         </Link>
       </td>
       <td>

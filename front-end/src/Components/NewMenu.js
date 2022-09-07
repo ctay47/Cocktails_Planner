@@ -1,14 +1,28 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,useParams } from 'react-router-dom';
 import {Form, Col, Row, Container} from 'react-bootstrap'
 import axios from 'axios';
 
 const API = process.env.REACT_APP_API_URL;
 
+
 const NewMenu = () => {
- const navigate = useNavigate();
- const [menu, setMenu] = useState({
+  const navigate = useNavigate();
+  const {id} = useParams
+  
+  
+  const addMenu = (menu) => {
+    axios
+      .post(`${API}/menus`, menu)
+      .then((response) => navigate(`/menus`))
+      .catch((error) => console.log(error));
+  };
+  
+  
+  
+  
+  const [menu, setMenu] = useState({
      name: '',
      image: '',
    info: '',
@@ -17,13 +31,15 @@ const NewMenu = () => {
      ingredients: '',
      is_favorite: false,
    
- });
-const addMenu = () => {
-  axios
-    .post(`${API}/menus`, menu)
-    .then((response) => navigate(`/menus`))
-    .catch((error) => console.log(error));
-};
+  });
+  
+  useEffect(() => {
+    axios
+      .get(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`)
+      .then((response) => setMenu(response.data))
+      .catch((error) => console.log(error))
+  
+  }, [id])
 
 const handleTextChange = (event) => {
   setMenu({ ...menu, [event.target.id]: event.target.value });
