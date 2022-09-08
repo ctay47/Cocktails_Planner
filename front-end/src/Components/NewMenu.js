@@ -1,62 +1,46 @@
-import React, { useEffect } from 'react'
+import React from 'react';
 import { useState } from 'react';
-import { useNavigate,useParams } from 'react-router-dom';
-import {Form, Col, Row, Container} from 'react-bootstrap'
+import { useNavigate } from 'react-router-dom';
+import { Form, Col, Row, Container } from 'react-bootstrap';
 import axios from 'axios';
 
 const API = process.env.REACT_APP_API_URL;
 
-
 const NewMenu = () => {
   const navigate = useNavigate();
-  const {id} = useParams
-  
-  
+
+  const [menu, setMenu] = useState({
+    name: '',
+    image: '',
+    info: '',
+    glass: '',
+    instructions: '',
+    ingredients: '',
+    is_favorite: false,
+  });
+
   const addMenu = (menu) => {
     axios
       .post(`${API}/menus`, menu)
       .then((response) => navigate(`/menus`))
       .catch((error) => console.log(error));
   };
-  
-  
-  
-  
-  const [menu, setMenu] = useState({
-     name: '',
-     image: '',
-   info: '',
-   glass: '',
-     instructions: '',
-     ingredients: '',
-     is_favorite: false,
-   
-  });
-  
-  useEffect(() => {
-    axios
-      .get(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`)
-      .then((response) => setMenu(response.data))
-      .catch((error) => console.log(error))
-  
-  }, [id])
 
-const handleTextChange = (event) => {
-  setMenu({ ...menu, [event.target.id]: event.target.value });
-};
-    
- const handleCheckboxChange = () => {
-   setMenu({ ...menu, is_favorite: !menu.is_favorite });
- };   
+  const handleTextChange = (event) => {
+    setMenu({ ...menu, [event.target.id]: event.target.value });
+  };
 
-const handleSubmit = (event) => {
-  event.preventDefault();
-  addMenu();
-};
+  const handleCheckboxChange = () => {
+    setMenu({ ...menu, is_favorite: !menu.is_favorite });
+  };
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    addMenu();
+  };
 
   return (
-    <section className='Add'>
+    <section className="Add">
       <Container className="square border">
         <h1>Add Drink to Menu</h1>
         <Row>
@@ -67,7 +51,7 @@ const handleSubmit = (event) => {
               controlId="formHorizontalImage"
             >
               <Form.Label htmlFor="image">Image</Form.Label>
-              <Col >
+              <Col>
                 <Form.Control
                   id="image"
                   name="image"
@@ -83,7 +67,7 @@ const handleSubmit = (event) => {
               controlId="formHorizontalName"
             >
               <Form.Label htmlFor="name">Name</Form.Label>
-              <Col >
+              <Col>
                 <Form.Control
                   id="name"
                   name="name"
@@ -100,7 +84,7 @@ const handleSubmit = (event) => {
               controlId="formHorizontalGlass"
             >
               <Form.Label htmlFor="glass">Glass</Form.Label>
-              <Col >
+              <Col>
                 <Form.Control
                   name="glass"
                   id="glass"
@@ -133,15 +117,14 @@ const handleSubmit = (event) => {
               className="mb-3"
               controlId="formHorizontalFavorite"
             >
-              
               <Form.Label htmlFor="is_favorite">Favorite</Form.Label>
               <Col>
-              <Form.Check
-                id="is_favorite"
-                type="checkbox"
-                onChange={handleCheckboxChange}
-                checked={menu.is_favorite}
-              />
+                <Form.Check
+                  id="is_favorite"
+                  type="checkbox"
+                  onChange={handleCheckboxChange}
+                  checked={menu.is_favorite}
+                />
               </Col>
             </Form.Group>
             <input className="btn btn-primary" type="submit" />
@@ -150,6 +133,6 @@ const handleSubmit = (event) => {
       </Container>
     </section>
   );
-}
+};
 
-export default NewMenu
+export default NewMenu;

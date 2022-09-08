@@ -1,8 +1,8 @@
-import React from 'react'
+import React from 'react';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { Form, Container,Row,Col } from 'react-bootstrap';
+import { Form, Container, Row, Col } from 'react-bootstrap';
 
 const API = process.env.REACT_APP_API_URL;
 
@@ -23,9 +23,9 @@ const EditMenu = () => {
   const handleTextChange = (event) => {
     setMenu({ ...menu, [event.target.id]: event.target.value });
   };
-    const handleCheckboxChange = () => {
-      setMenu({ ...menu, is_favorite: !menu.is_favorite });
-    };
+  const handleCheckboxChange = () => {
+    setMenu({ ...menu, is_favorite: !menu.is_favorite });
+  };
 
   useEffect(() => {
     axios.get(`${API}/menus/${id}`).then(
@@ -114,23 +114,20 @@ const EditMenu = () => {
                   type="checkbox"
                   required
                   onChange={handleCheckboxChange}
-                 
                 />
               </Col>
             </Form.Group>
-
-            <button className='btn btn-primary' type="submit">
+            <button className="btn btn-primary" type="submit">
               Submit
-            </button>
-            {' '}
+            </button>{' '}
             <Link to={`/menus/${id}`}>
-              <button className='btn btn-primary'>Cancel</button>
+              <button className="btn btn-primary">Cancel</button>
             </Link>
           </Form>
         </Row>
       </Container>
     </section>
   );
-}
+};
 
-export default EditMenu
+export default EditMenu;

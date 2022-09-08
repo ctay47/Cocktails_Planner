@@ -1,20 +1,19 @@
-import React from 'react'
-import CocktailSearch from './CocktailSearch'
-import Loading from './Loading'
-import { useGlobalContext } from '../context'
-
+import React from 'react';
+import CocktailSearch from './CocktailSearch';
+import Loading from './Loading';
+import { useGlobalContext } from '../context';
 
 const CocktailList = () => {
   const { cocktailsList, loading } = useGlobalContext();
   if (loading) {
-    return <Loading />
+    return <Loading />;
   }
   if (cocktailsList.length < 1) {
-    return(
-    <h2 className="section-title">
-      no cocktails matched your search criteria{' '}
+    return (
+      <h2 className="section-title">
+        no cocktails matched your search criteria{' '}
       </h2>
-    )
+    );
   }
   return (
     <section className="section">
@@ -26,6 +25,6 @@ const CocktailList = () => {
       </div>
     </section>
   );
-}
+};
 
-export default CocktailList
+export default CocktailList;

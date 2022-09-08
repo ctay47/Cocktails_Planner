@@ -1,13 +1,12 @@
-import React from 'react'
-import {Link} from 'react-router-dom'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-
-const Menu = ({menu}) => {
+const Menu = ({ menu }) => {
   return (
     <tr>
       <td>
         <Link to={`/menus/${menu.id}`}>
-          {<img className="table_img" src={menu.image} alt='table_img'></img>}
+          {<img className="table_img" src={menu.image} alt="table_img"></img>}
         </Link>
       </td>
       <td>
@@ -20,6 +19,6 @@ const Menu = ({menu}) => {
       </td>
     </tr>
   );
-}
+};
 
-export default Menu
+export default Menu;
