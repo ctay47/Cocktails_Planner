@@ -19,7 +19,7 @@ const NewMenu = () => {
     is_favorite: false,
   });
 
-  const addMenu = (menu) => {
+  const addMenu = () => {
     axios
       .post(`${API}/menus`, menu)
       .then((response) => navigate(`/menus`))
